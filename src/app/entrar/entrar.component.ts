@@ -32,7 +32,7 @@ export class EntrarComponent implements OnInit {
       environment.id = this.userLogin.id
       
       this.router.navigate(['/inicio'])
-    }, erro=> {
+    }, erro => {
       if(erro.status == 500) {
         alert("Usuário ou senha estão incorretos!")
       }
