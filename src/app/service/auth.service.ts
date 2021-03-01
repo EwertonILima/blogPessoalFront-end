@@ -12,21 +12,24 @@ import { Usuario } from '../model/Usuario';
 export class AuthService {
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient) { }
 
-  entrar(userLogin: UserLogin): Observable<UserLogin>{
+  entrar(userLogin: UserLogin): Observable<UserLogin> {
     return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar', userLogin)
   }
 
-  cadastrar(usuario: Usuario): Observable<Usuario>{
-    return this.http.post<Usuario> ('http://localhost:8080/usuarios/cadastrar', usuario)
+  cadastrar(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario)
   }
-  
-  logado(){
+
+  getByIdUsuario(id: number): Observable<Usuario> {
+    return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`)
+  }
+
+  logado() {
     let ok: boolean = false
 
-    if (environment.token != ''){
+    if (environment.token != '') {
       ok = true
     }
 
